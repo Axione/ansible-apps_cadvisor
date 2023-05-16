@@ -1,0 +1,3 @@
+---
+cadvisor_url: https://github.com/google/cadvisor/releases/download/
+cadvisor_download: "{{ cadvisor_url }}/{{ cadvisor_version }}/cadvisor-{{ cadvisor_version }}-linux-amd64"

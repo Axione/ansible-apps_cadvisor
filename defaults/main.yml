@@ -1,0 +1,7 @@
+---
+cadvisor_version: v0.47.0
+cadvisor_install_path: "/opt/cadvisor"
+#When copy from local path empty = from internet
+cadvisor_binary_path: ""
+cadvisor_port: 9120
+cadvisor_systemd_options: ""
