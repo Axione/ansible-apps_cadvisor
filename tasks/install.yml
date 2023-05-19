@@ -1,14 +1,14 @@
 ---
 - name: "Create directory"
   become: true
-  file:
+  ansible.builtin.file:
     path: "{{ cadvisor_install_path }}"
     state: directory
     mode: 0755
 
 - name: "Download binary"
   become: true
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ cadvisor_download }}"
     dest: "{{ cadvisor_install_path }}/cadvisor-{{ cadvisor_version }}"
     force: false
@@ -16,7 +16,7 @@
   when: cadvisor_binary_path | length == 0
 
 - name: "Copy local distributed cadvisor binary"
-  copy:
+  ansible.builtin.copy:
     src: "{{ cadvisor_binary_path }}"
     dest: "{{ cadvisor_install_path }}/cadvisor-{{ cadvisor_version }}"
     mode: 0755
@@ -28,7 +28,7 @@
 
 - name: "Symlink"
   become: true
-  file:
+  ansible.builtin.file:
     src: "{{ cadvisor_install_path }}/cadvisor-{{ cadvisor_version }}"
     path: "{{ cadvisor_install_path }}/cadvisor"
     force: true
@@ -36,7 +36,7 @@
 
 - name: "Create systemd service"
   become: true
-  template:
+  ansible.builtin.template:
     dest: /etc/systemd/system/cadvisor.service
     src: systemd-system-cadvisor-service.j2
     mode: 0644
@@ -45,7 +45,7 @@
 
 - name: "Enable and start server systemd"
   become: true
-  systemd:
+  ansible.builtin.systemd:
     enabled: true
     name: cadvisor.service
     state: started
