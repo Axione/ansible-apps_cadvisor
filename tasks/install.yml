@@ -24,7 +24,7 @@
     group: root
   when: cadvisor_binary_path | length > 0
   notify:
-    - restart cadvisor
+    - Restart cadvisor
 
 - name: "Symlink"
   become: true
@@ -41,7 +41,7 @@
     src: systemd-system-cadvisor-service.j2
     mode: 0644
   notify:
-    - restart cadvisor
+    - Restart cadvisor
 
 - name: "Enable and start server systemd"
   become: true
