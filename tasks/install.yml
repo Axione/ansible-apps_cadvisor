@@ -4,7 +4,7 @@
   ansible.builtin.file:
     path: "{{ cadvisor_install_path }}"
     state: directory
-    mode: 0755
+    mode: '0755'
 
 - name: "Download binary"
   become: true
@@ -19,7 +19,7 @@
   ansible.builtin.copy:
     src: "{{ cadvisor_binary_path }}"
     dest: "{{ cadvisor_install_path }}/cadvisor-{{ cadvisor_version }}"
-    mode: 0755
+    mode: '0755'
     owner: root
     group: root
   when: cadvisor_binary_path | length > 0
@@ -39,7 +39,7 @@
   ansible.builtin.template:
     dest: /etc/systemd/system/cadvisor.service
     src: systemd-system-cadvisor-service.j2
-    mode: 0644
+    mode: '0644'
   notify:
     - Restart cadvisor
 
