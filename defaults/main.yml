@@ -1,6 +1,9 @@
 ---
-cadvisor_version: v0.47.0
+### Installation
+cadvisor_version: "v0.49.2"
 cadvisor_install_path: "/opt/cadvisor"
+
+### Configuration
 #When copy from local path empty = from internet
 cadvisor_binary_path: ""
 cadvisor_port: 9120
